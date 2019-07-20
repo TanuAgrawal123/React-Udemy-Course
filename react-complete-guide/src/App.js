@@ -8,7 +8,8 @@ class App extends Component{
       {name:"anubha", age:23},
       {name:"harsh", age:17}
     ],
-    otherstate:'some other value'
+    otherstate:'some other value',
+    showPersons:false
     
     }
     switchNameHandler=(newname)=>{
@@ -32,15 +33,30 @@ class App extends Component{
       ]
      })
    }
+   togglePersonHandler=()=>
+   {
+   const doesShow=this.state.showPersons
+   this.setState({showPersons:!doesShow})
+   }
  render(){
+   const style={
+     backgroundColor:'white',
+     font:'inherit',
+     border: '1px solid blue',
+     padding:'8px'
+
+   }
   return(
       <div className="App">
       <h1>Hi I m react app</h1>
-      <h1 onCopy={this.switchNameHandler}>Switch here!</h1>
+      <button 
+      style={style} onClick={this.togglePersonHandler}>Switch here!</button>
+      {this.state.showPersons?
+      <div>
       <Person name={this.state.person[0].name} age={this.state.person[0].age}/>
       <Person name={this.state.person[1].name} age={this.state.person[1].age} click={this.switchNameHandler.bind(this,"Tanu Agrawal")} changed={this.nameChangeHandler}> My hobby is not  cooking!  </Person>
       <Person name={this.state.person[2].name} age={this.state.person[2].age}/>
-
+</div>:null}
       </div>
       
     )
