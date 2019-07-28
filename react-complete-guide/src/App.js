@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
 import './App.css';
-import Radium from 'radium';
+import Radium ,{StyleRoot} from 'radium';
 
 class App extends Component{
   state={
@@ -101,6 +101,7 @@ class App extends Component{
 
     }
   return(
+    <StyleRoot>
       <div className="App">
       <h1>Hi I m react app</h1>
       <p className={classes.join(' ')}>This is really working</p>
@@ -109,7 +110,7 @@ class App extends Component{
       {persons}
       
       </div>
-      
+      </StyleRoot>
     )
     
 //return React.createElement('div',null, React.createElement('h1',{className:'App'},"hii i am react"));
